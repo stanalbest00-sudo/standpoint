@@ -31,37 +31,87 @@
     reveals.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  // ── Scroll-driven intro: draws video frames to a canvas ────────
+  // ── Scroll-driven intro ────────────────────────────────────────
+  // 0 → P_VIDEO   : video frames scrub with scroll (captions fade in and out)
+  // P_VIDEO → P_SETTLE : camera eases out and the logo artwork crossfades in,
+  //                      aligned so the two logos overlap exactly
+  // P_UI_START → P_UI_END : buttons and values fade in → the landing screen
+  // after that     : the landing screen holds, then the page scrolls on
   var intro = document.getElementById('intro');
   if (intro && document.documentElement.classList.contains('motion')) {
+    var P_VIDEO = 0.72, P_SETTLE = 0.86, P_UI_START = 0.80, P_UI_END = 0.93;
+    // Where the artwork sits relative to the video's last frame (measured offline).
+    var ART_W = 0.5352, ART_CX = 0.4984, ART_CY = 0.4472;
+    // Logo cluster inside the artwork (fractions of the artwork).
+    var LOGO_W = 0.64, LOGO_H = 0.58 / 0.6667, LOGO_CY = 0.495;
+
     var canvas = intro.querySelector('.intro-canvas');
     var ctx = canvas.getContext('2d');
     var captions = [].slice.call(intro.querySelectorAll('.intro-caption'));
+    var finalEl = intro.querySelector('.intro-final');
+    var steps = [finalEl.querySelector('.hero-actions')].concat([].slice.call(finalEl.querySelectorAll('.feature')));
+    steps.forEach(function (el) { el.setAttribute('data-step', ''); });
+    var HEADER = 76;
+    function measureHeader() {
+      var h = document.querySelector('.site-header');
+      HEADER = h ? h.offsetHeight : 76;
+      document.documentElement.style.setProperty('--header-h', HEADER + 'px');
+    }
+    measureHeader();
+
     var FRAMES = 181;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var size = (window.innerWidth * dpr > 1000) ? 'lg' : 'sm';
     var frames = new Array(FRAMES);
-    var current = 0, target = 0, lastDrawn = -1, ticking = false;
+    var currentP = 0, targetP = 0, ticking = false, lastKey = '';
+
+    function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+    function easeInOut(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    // Feathered copy of the logo artwork, built once it loads.
+    var art = null;
+    var artImg = new Image();
+    artImg.decoding = 'async';
+    artImg.onload = function () {
+      var c = document.createElement('canvas');
+      c.width = artImg.naturalWidth; c.height = artImg.naturalHeight;
+      var x = c.getContext('2d');
+      x.drawImage(artImg, 0, 0);
+      x.globalCompositeOperation = 'destination-in';
+      x.save();
+      x.translate(c.width / 2, c.height * 0.5);
+      x.scale(1, (c.height / c.width) * 1.3);
+      var g = x.createRadialGradient(0, 0, c.width * 0.32, 0, 0, c.width * 0.55);
+      g.addColorStop(0, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+      x.fillStyle = g; x.fillRect(-c.width, -c.width, c.width * 2, c.width * 2);
+      x.restore();
+      art = c;
+      requestDraw(true);
+    };
 
     function src(i) { return 'assets/frames/' + size + '/f' + String(i + 1).padStart(3, '0') + '.webp'; }
 
-    // Load order: first frame, then a coarse pass (every 8th), then fill in the rest.
+    // Load order: first frame, then a coarse pass, then fill in; the artwork after the coarse pass.
     var order = [0], seen = { 0: true };
     [8, 4, 2, 1].forEach(function (step) {
       for (var i = 0; i < FRAMES; i += step) if (!seen[i]) { seen[i] = true; order.push(i); }
     });
     var cursor = 0, inflight = 0;
     function pump() {
+      if (cursor === 24 && !artImg.src) artImg.src = 'assets/img/hero-wide.webp';
       while (inflight < 6 && cursor < order.length) {
         (function (i) {
           var img = new Image();
           img.decoding = 'async';
           inflight++;
-          img.onload = function () { frames[i] = img; inflight--; if (i === 0 || Math.abs(i - Math.round(current)) < 8) requestDraw(true); pump(); };
+          img.onload = function () { frames[i] = img; inflight--; requestDraw(true); pump(); };
           img.onerror = function () { inflight--; pump(); };
           img.src = src(i);
         })(order[cursor++]);
       }
+      if (cursor >= order.length && !artImg.src) artImg.src = 'assets/img/hero-wide.webp';
     }
     pump();
 
@@ -73,84 +123,147 @@
       return null;
     }
 
+    var finalH = 0;
     function resize() {
+      measureHeader();
       canvas.width = Math.round(canvas.clientWidth * dpr);
       canvas.height = Math.round(canvas.clientHeight * dpr);
-      lastDrawn = -1;
+      finalH = finalEl.offsetHeight * dpr;
+      lastKey = '';
       requestDraw(true);
     }
 
-    function draw(force) {
-      var idx = Math.round(current);
-      if (!force && idx === lastDrawn) return;
+    // Rect of a video frame drawn at rest (cover on wide screens; on tall screens keep
+    // the centre ~half of the frame visible so the logo is never cropped).
+    function videoRect(iw, ih) {
+      var cw = canvas.width, ch = canvas.height;
+      var scale = Math.min(Math.max(cw / iw, ch / ih), cw / (iw * 0.5));
+      var w = iw * scale, h = ih * scale;
+      return { x: (cw - w) / 2, y: (ch - h) / 2, w: w, h: h };
+    }
+
+    // Where the artwork ends up: its logo fills the space above the landing content.
+    function artEnd() {
+      var cw = canvas.width, ch = canvas.height;
+      var top = 18 * dpr, bottom = ch - finalH - 6 * dpr;
+      var availH = Math.max(bottom - top, ch * 0.4);
+      var aw = Math.min((availH * 0.98) / (LOGO_H * 0.6667), (cw * 0.94) / LOGO_W);
+      var ah = aw * 0.6667;
+      var cy = top + availH / 2 - (LOGO_CY - 0.5) * ah;
+      return { cx: cw / 2, cy: cy, w: aw };
+    }
+
+    function feather(y, h) {
+      if (y <= 1) return;
+      var cw = canvas.width, f = h * 0.22, g;
+      g = ctx.createLinearGradient(0, y, 0, y + f);
+      g.addColorStop(0, '#000'); g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g; ctx.fillRect(0, y - 1, cw, f + 1);
+      g = ctx.createLinearGradient(0, y + h - f, 0, y + h);
+      g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, '#000');
+      ctx.fillStyle = g; ctx.fillRect(0, y + h - f, cw, f + 1);
+    }
+
+    function draw(p, force) {
+      var idx = Math.round(clamp(p / P_VIDEO) * (FRAMES - 1));
+      var t = easeInOut(clamp((p - P_VIDEO) / (P_SETTLE - P_VIDEO)));
+      var key = idx + ':' + t.toFixed(3) + ':' + (art ? 1 : 0);
+      if (!force && key === lastKey) return;
       var img = nearestLoaded(idx);
       if (!img) return;
-      lastDrawn = idx;
-      var cw = canvas.width, ch = canvas.height, iw = img.naturalWidth, ih = img.naturalHeight;
-      // Cover on wide screens; on tall screens keep the centre ~55% of the frame visible
-      // so the logo and its tagline never get cropped.
-      var cover = Math.max(cw / iw, ch / ih);
-      var scale = Math.min(cover, cw / (iw * 0.5));
-      var w = iw * scale, h = ih * scale;
+      lastKey = key;
+
+      var cw = canvas.width, ch = canvas.height;
+      ctx.globalAlpha = 1;
       ctx.fillStyle = '#000';
       ctx.fillRect(0, 0, cw, ch);
-      var x = (cw - w) / 2, y = (ch - h) / 2;
-      ctx.drawImage(img, x, y, w, h);
-      // When the frame is letterboxed (tall screens), feather its top and bottom into black.
-      if (y > 1) {
-        var f = h * 0.22, g;
-        g = ctx.createLinearGradient(0, y, 0, y + f);
-        g.addColorStop(0, '#000'); g.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = g; ctx.fillRect(0, y - 1, cw, f + 1);
-        g = ctx.createLinearGradient(0, y + h - f, 0, y + h);
-        g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, '#000');
-        ctx.fillStyle = g; ctx.fillRect(0, y + h - f, cw, f + 1);
+
+      var r = videoRect(img.naturalWidth, img.naturalHeight);
+      if (t <= 0 || !art) {
+        ctx.drawImage(img, r.x, r.y, r.w, r.h);
+        feather(r.y, r.h);
+        return;
       }
+      // Artwork aligned to the video at rest, then eased to its end position.
+      var a0 = { cx: r.x + ART_CX * r.w, cy: r.y + ART_CY * r.h, w: ART_W * r.w };
+      var a1 = artEnd();
+      var a = { cx: lerp(a0.cx, a1.cx, t), cy: lerp(a0.cy, a1.cy, t), w: lerp(a0.w, a1.w, t) };
+      var k = a.w / a0.w;
+      var vw = r.w * k, vh = r.h * k;
+      var vx = a.cx - ART_CX * vw, vy = a.cy - ART_CY * vh;
+
+      ctx.globalAlpha = 1 - t;
+      ctx.drawImage(img, vx, vy, vw, vh);
+      ctx.globalAlpha = 1;
+      feather(vy, vh);
+      var ah = a.w * (art.height / art.width);
+      ctx.globalAlpha = t;
+      ctx.drawImage(art, a.cx - a.w / 2, a.cy - ah / 2, a.w, ah);
+      ctx.globalAlpha = 1;
     }
 
     function progress() {
       var r = intro.getBoundingClientRect();
-      var total = r.height - window.innerHeight;
-      return Math.max(0, Math.min(1, -r.top / total));
+      var total = r.height - (window.innerHeight - HEADER);
+      return clamp((HEADER - r.top) / total);
     }
 
-    function updateCaptions(p) {
+    function updateOverlay(p) {
       captions.forEach(function (c) {
-        var from = +c.dataset.from, to = +c.dataset.to, fade = 0.05;
+        var from = +c.dataset.from, to = +c.dataset.to, fade = 0.045;
         var o = 0;
         if (p >= from && p <= to) o = Math.min(1, (p - from) / fade, (to - p) / fade);
-        var y = (1 - o) * 10, b = (1 - o) * 6;
         c.style.opacity = o.toFixed(3);
-        c.style.transform = 'translateY(' + y.toFixed(1) + 'px)';
-        c.style.filter = b > 0.1 ? 'blur(' + b.toFixed(1) + 'px)' : 'none';
+        c.style.transform = 'translateY(' + ((1 - o) * 10).toFixed(1) + 'px)';
+        c.style.filter = o < 0.98 ? 'blur(' + ((1 - o) * 6).toFixed(1) + 'px)' : 'none';
       });
+      var u = clamp((p - P_UI_START) / (P_UI_END - P_UI_START));
+      finalEl.style.setProperty('--t', u.toFixed(3));
+      steps.forEach(function (el, i) {
+        var e = easeOut(clamp((u - i * 0.1) / 0.6));
+        el.style.opacity = e.toFixed(3);
+        el.style.transform = e < 1 ? 'translateY(' + ((1 - e) * 14).toFixed(1) + 'px)' : 'none';
+        el.style.filter = e < 0.98 ? 'blur(' + ((1 - e) * 6).toFixed(1) + 'px)' : 'none';
+      });
+      var isFinal = u > 0.7;
+      if (isFinal !== intro.classList.contains('final')) {
+        intro.classList.toggle('final', isFinal);
+      }
       intro.classList.toggle('scrolled', p > 0.02);
     }
 
     function loop() {
       // Light smoothing so fast flicks still read as motion, not jumps.
-      current += (target - current) * 0.22;
-      if (Math.abs(target - current) < 0.05) current = target;
-      draw(false);
-      if (current !== target) requestAnimationFrame(loop); else ticking = false;
+      currentP += (targetP - currentP) * 0.2;
+      if (Math.abs(targetP - currentP) < 0.0004) currentP = targetP;
+      draw(currentP, false);
+      updateOverlay(currentP);
+      if (currentP !== targetP) requestAnimationFrame(loop); else ticking = false;
     }
 
     function requestDraw(force) {
-      if (force) draw(true);
+      if (force) { draw(currentP, true); updateOverlay(currentP); }
       if (!ticking) { ticking = true; requestAnimationFrame(loop); }
     }
 
     function onScroll() {
-      var p = progress();
-      target = p * (FRAMES - 1);
-      updateCaptions(p);
+      targetP = progress();
       requestDraw(false);
     }
+
+    // Keyboard users: focusing the landing buttons scrolls the landing screen into view.
+    finalEl.addEventListener('focusin', function () {
+      if (!intro.classList.contains('final')) {
+        var total = intro.offsetHeight - (window.innerHeight - HEADER);
+        window.scrollTo(0, intro.offsetTop - HEADER + total * 0.95);
+      }
+    });
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', resize);
     resize();
-    onScroll();
+    targetP = currentP = progress();
+    requestDraw(true);
   }
 
   // ── Video modal ────────────────────────────────────────────────
