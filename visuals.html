@@ -8,11 +8,15 @@
   <meta property="og:title" content="Visual explainers · Standpoint Seychelles">
   <meta property="og:description" content="Visual guides to how Seychelles is governed: the separation of powers, how a law is made, and how elections work.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#072a63">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#070504">
+  <link rel="icon" href="assets/img/icon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/icon-180.png">
+  <script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -22,27 +26,16 @@
     <div class="container">
       <nav class="nav" aria-label="Main">
         <a class="brand" href="index.html">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
-  <defs><clipPath id="logo-clip"><rect width="64" height="64" rx="14"/></clipPath></defs>
-  <g clip-path="url(#logo-clip)">
-    <rect width="64" height="64" fill="#0a7d3e"/>
-    <path d="M0 64 L0 0 L20 0 Z" fill="#0b3d91"/>
-    <path d="M0 64 L20 0 L46 0 Z" fill="#f7c948"/>
-    <path d="M0 64 L46 0 L64 0 L64 14 Z" fill="#d62828"/>
-    <path d="M0 64 L64 14 L64 38 Z" fill="#ffffff"/>
-  </g>
-  <circle cx="44" cy="44" r="13" fill="#072a63"/>
-  <circle cx="44" cy="44" r="5.5" fill="#f7c948"/>
-</svg>
-          <span>Standpoint<small>Seychelles</small></span>
+          <img src="assets/img/logo-sm.webp" width="193" height="200" alt="Standpoint Seychelles — home">
         </a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">☰</button>
         <ul class="nav-links" id="nav-links">
           <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="learn.html">Learn</a></li>
           <li><a href="visuals.html" aria-current="page">Visuals</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="get-involved.html">Get involved</a></li>
+          <li><a href="get-involved.html#contact">Contact</a></li>
+          <li class="nav-cta"><a href="get-involved.html">Get involved</a></li>
         </ul>
       </nav>
     </div>
@@ -60,23 +53,23 @@
 <section>
   <div class="container">
 
-    <article class="visual" id="powers">
+    <article class="visual reveal" id="powers">
       <div class="visual-head">
         <div><span class="tag">Explainer</span><h2>Separation of powers</h2></div>
         <p>The Constitution divides state power between three branches so that no single person or body holds it all.</p>
       </div>
       <div class="pillars">
-        <div class="pillar bg-blue">
+        <div class="pillar c-blue">
           <div class="who">Executive</div>
           <h3>The President &amp; Cabinet</h3>
           <ul><li>Leads the government and runs ministries</li><li>Proposes policies and the national budget</li><li>Head of State and Commander-in-Chief</li></ul>
         </div>
-        <div class="pillar bg-yellow">
+        <div class="pillar c-yellow">
           <div class="who">Legislature</div>
           <h3>The National Assembly</h3>
           <ul><li>Debates and passes laws</li><li>Approves the budget</li><li>Questions ministers and scrutinises government</li></ul>
         </div>
-        <div class="pillar bg-green">
+        <div class="pillar c-green">
           <div class="who">Judiciary</div>
           <h3>The Courts</h3>
           <ul><li>Interprets and applies the law</li><li>Settles disputes and tries cases</li><li>Constitutional Court protects your rights</li></ul>
@@ -85,7 +78,7 @@
       <div class="checks"><strong>Checks &amp; balances:</strong> the Assembly can scrutinise the Executive, the courts can strike down acts that break the Constitution, and independent bodies (such as the Electoral Commission and the Ombudsman) add further oversight.</div>
     </article>
 
-    <article class="visual" id="law">
+    <article class="visual reveal" id="law">
       <div class="visual-head">
         <div><span class="tag">Step by step</span><h2>How a law is made</h2></div>
         <p>Every Act of the National Assembly follows the same basic path.</p>
@@ -100,7 +93,7 @@
       </ol>
     </article>
 
-    <article class="visual" id="vote">
+    <article class="visual reveal" id="vote">
       <div class="visual-head">
         <div><span class="tag">Your vote</span><h2>From registration to results</h2></div>
         <p>The journey of your ballot, run by the independent Electoral Commission.</p>
@@ -118,15 +111,15 @@
       </div>
     </article>
 
-    <article class="visual" id="layers">
+    <article class="visual reveal" id="layers">
       <div class="visual-head">
         <div><span class="tag">Explainer</span><h2>Who represents you?</h2></div>
         <p>Different people represent you at different levels. Know who to go to.</p>
       </div>
       <div class="grid grid-3">
-        <div class="card"><div class="icon bg-blue" aria-hidden="true">🇸🇨</div><h3>National</h3><p><strong>The President</strong>, elected by all voters across the country.</p></div>
-        <div class="card"><div class="icon bg-red" aria-hidden="true">🗣️</div><h3>Constituency</h3><p><strong>Your Member of the National Assembly</strong>, elected by your district to speak for you in the Assembly.</p></div>
-        <div class="card"><div class="icon bg-green" aria-hidden="true">🏘️</div><h3>District</h3><p><strong>Your District Administration</strong>, the local office for community services and concerns.</p></div>
+        <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></div><h3>National</h3><p><strong>The President</strong>, elected by all voters across the country.</p></div>
+        <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div><h3>Constituency</h3><p><strong>Your Member of the National Assembly</strong>, elected by your district to speak for you in the Assembly.</p></div>
+        <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div><h3>District</h3><p><strong>Your District Administration</strong>, the local office for community services and concerns.</p></div>
       </div>
     </article>
 
@@ -139,8 +132,8 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4>Standpoint Seychelles</h4>
-          <p>Independent, non-partisan civic education for every Seychellois.</p>
+          <img class="footer-logo" src="assets/img/logo-sm.webp" width="193" height="200" alt="Standpoint Seychelles" loading="lazy">
+          <p>Where truth ignites transformation. Independent, non-partisan civic education for every Seychellois.</p>
         </div>
         <div>
           <h4>Learn</h4>
