@@ -6,9 +6,18 @@
   var toggle = document.querySelector('.nav-toggle');
   var links = document.querySelector('.nav-links');
   if (toggle && links) {
-    toggle.addEventListener('click', function () {
-      var open = links.classList.toggle('open');
+    function setMenu(open) {
+      links.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.textContent = open ? '✕' : '☰';
+    }
+    toggle.addEventListener('click', function () { setMenu(!links.classList.contains('open')); });
+    links.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && links.classList.contains('open')) { setMenu(false); toggle.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (links.classList.contains('open') && !e.target.closest('.nav')) setMenu(false);
     });
   }
 
@@ -93,27 +102,43 @@
 
     function src(i) { return 'assets/frames/' + size + '/f' + String(i + 1).padStart(3, '0') + '.webp'; }
 
-    // Load order: first frame, then a coarse pass, then fill in; the artwork after the coarse pass.
+    // Load order: first frame, then a coarse pass (every 8th frame) right away.
+    // The rest (and the logo artwork) waits until the visitor starts scrolling
+    // or the browser is idle, so the first paint stays light on mobile data.
     var order = [0], seen = { 0: true };
     [8, 4, 2, 1].forEach(function (step) {
       for (var i = 0; i < FRAMES; i += step) if (!seen[i]) { seen[i] = true; order.push(i); }
     });
-    var cursor = 0, inflight = 0;
+    var limit = Math.ceil(FRAMES / 8), cursor = 0, inflight = 0;
+    function idxNow() { return Math.round(clamp(currentP / P_VIDEO) * (FRAMES - 1)); }
     function pump() {
-      if (cursor === 24 && !artImg.src) artImg.src = 'assets/img/hero-wide.webp';
-      while (inflight < 6 && cursor < order.length) {
+      while (inflight < 6 && cursor < limit) {
         (function (i) {
           var img = new Image();
           img.decoding = 'async';
           inflight++;
-          img.onload = function () { frames[i] = img; inflight--; requestDraw(true); pump(); };
+          img.onload = function () {
+            frames[i] = img; inflight--;
+            if (i === 0 || Math.abs(i - idxNow()) < 4) requestDraw(true);
+            pump();
+          };
           img.onerror = function () { inflight--; pump(); };
           img.src = src(i);
         })(order[cursor++]);
       }
-      if (cursor >= order.length && !artImg.src) artImg.src = 'assets/img/hero-wide.webp';
+    }
+    var fullLoad = false;
+    function loadRest() {
+      if (fullLoad) return;
+      fullLoad = true;
+      limit = order.length;
+      artImg.src = 'assets/img/hero-wide.webp';
+      pump();
     }
     pump();
+    window.addEventListener('scroll', loadRest, { passive: true, once: true });
+    if ('requestIdleCallback' in window) requestIdleCallback(loadRest, { timeout: 4000 });
+    else setTimeout(loadRest, 3000);
 
     function nearestLoaded(i) {
       for (var d = 0; d < FRAMES; d++) {
