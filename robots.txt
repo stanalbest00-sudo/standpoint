@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://stanalbest00-sudo.github.io/standpoint/sitemap.xml

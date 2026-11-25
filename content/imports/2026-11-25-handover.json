@@ -1,0 +1,495 @@
+{
+  "batch": "handover-2026-11-25",
+  "as_of": "2026-11-25",
+  "description": "Standpoint Seychelles content handover. Published records have a verified YouTube ID, publisher and date; review records are imported but hidden until an editor confirms the missing detail.",
+  "episodes": [
+    {
+      "youtube_id": "gDyx0k-ZPwA",
+      "episode": 8,
+      "title": "Breaking the Cycle: From Dependency to Dominion - Part 2",
+      "title_lang": "en",
+      "published_title": "Breaking the Cycle: From Dependency to Dominion - Part 2 | Standpoint Seychelles Live | Ep 8",
+      "date": "2026-05-25",
+      "date_source": "handover",
+      "format": "live-podcast",
+      "summary": "The panel asks what would help people move beyond long-term dependency and what responsibility individuals and institutions share in that change.",
+      "status": "published",
+      "related": [
+        {
+          "youtube_id": "cIDHX9doXyw",
+          "relation": "part-1"
+        }
+      ],
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "LQjxmW92yps",
+      "episode": 12,
+      "title": "Democracy Beyond Elections: Do We Know Our Constitution?",
+      "title_lang": "en",
+      "published_title": "Democracy Beyond Elections: Do We Know Our Constitution? | Standpoint Seychelles live | Ep 12",
+      "date": "2026-06-22",
+      "date_source": "handover",
+      "format": "live-podcast",
+      "summary": "A discussion of constitutional rights, the separation of powers and what citizens need to know to participate in democracy between elections.",
+      "status": "published",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "2zFrmKl5qFM",
+      "episode": 17,
+      "title": "50 Years Later: Are Seychellois Politically Mature?",
+      "title_lang": "en",
+      "published_title": "50 Years Later: Are Seychellois Politically Mature? | Standpoint Seychelles Live | Ep 17",
+      "date": "2026-08-03",
+      "date_source": "handover",
+      "format": "live-podcast",
+      "summary": "Fifty years after Independence, the panel examines political loyalty, accountability and how young Seychellois can shape the country’s political future.",
+      "status": "published",
+      "title_secondary": {
+        "text": "50an apre: Eski Seselwa i politikman matir?",
+        "lang": "crs",
+        "kind": "campaign title"
+      },
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "Fm9wdQSGr7c",
+      "episode": 21,
+      "title": "Aret Esper En Dimoun Pour Sov Sesel",
+      "title_lang": "crs",
+      "published_title": "Aret Esper En Dimoun Pour Sov Sesel | Standpoint Seychelles Live | Ep 21",
+      "date": "2026-08-31",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "published",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "O5r3owpTa7s",
+      "episode": 22,
+      "title": "Pe Travay Dir, Selman Pos I Vid: Akoz saler pa pe ase?",
+      "title_lang": "crs",
+      "published_title": "PE TRAVAY DIR, SELMAN POS I VID : Akoz saler pa pe ase? | Standpoint Seychelles Live | Ep 22",
+      "date": "2026-09-07",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "published",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "mJKMSm-rV9s",
+      "episode": 23,
+      "title": "Pe Travay Dir. Selman Pos I Vid. – Part 2",
+      "title_lang": "crs",
+      "published_title": "PE TRAVAY DIR. SELMAN POS I VID. | PART 2 | Standpoint Seychelles | Ep 23",
+      "date": "2026-09-14",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "published",
+      "related": [
+        {
+          "youtube_id": "O5r3owpTa7s",
+          "relation": "part-1"
+        }
+      ],
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "E3JtOAPWWTI",
+      "episode": 24,
+      "title": "Pe Travay Dir, Selman Pos I Vid! – Part 3",
+      "title_lang": "crs",
+      "published_title": "PE TRAVAY DIR, SELMAN POS I VID! | PART 3 | Standpoint Seychelles | Ep 24",
+      "date": "2026-09-21",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "published",
+      "related": [
+        {
+          "youtube_id": "O5r3owpTa7s",
+          "relation": "part-1"
+        }
+      ],
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "RnLzTj0-w4Q",
+      "episode": 25,
+      "title": "Sesel i pou Lekel? Developman, Loportinite, Lekel ki pe Benefisye?",
+      "title_lang": "crs",
+      "published_title": "Sesel i pou Lekel? | Developman, Loportinite, Lekel ki pe Benefisye? | Standpoint Seychelles EP 25",
+      "date": "2026-09-28",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "published",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "57WNFXEhvpA",
+      "episode": 27,
+      "title": "Ki direksyon Sesel pe ale?",
+      "title_lang": "crs",
+      "published_title": "Ki direksyon Sesel pe ale? | Standpoint Seychelles Live | EP27",
+      "date": "2026-10-26",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "published",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "8kSMZGyyeHM",
+      "episode": 28,
+      "title": "Ki direksyon Sesel pe ale? – Part 2",
+      "title_lang": "crs",
+      "published_title": "KI DIREKSYON SESEL PE ALE? : PART 2 | Standpoint Seychelles Live | EP28",
+      "date": "2026-11-02",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "published",
+      "related": [
+        {
+          "youtube_id": "57WNFXEhvpA",
+          "relation": "part-1"
+        }
+      ],
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "axWGu0_omjw",
+      "episode": 29,
+      "title": "Ki direksyon Sesel pe ale? – Part 3",
+      "title_lang": "crs",
+      "published_title": "KI DIREKSYON SESEL PE ALE? : PART 3 | Standpoint Seychelles Live | EP29",
+      "date": "2026-11-09",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "published",
+      "related": [
+        {
+          "youtube_id": "57WNFXEhvpA",
+          "relation": "part-1"
+        }
+      ],
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "OaqjyDR7T58",
+      "episode": 30,
+      "title": "Kou Lavi dan Sesel: Bidze Nasyonal 2027",
+      "title_lang": "crs",
+      "published_title": "Kou Lavi dan Sesel | Bidze Nasyonal 2027 | Standpoint Seychelles Live EP 30",
+      "date": "2026-11-16",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "published",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "ih5yS4SnkLY",
+      "episode": 31,
+      "title": "Kou Lavi Dan Sesel: Bidze Nasyonal 2027 – Part 2",
+      "title_lang": "crs",
+      "published_title": "Kou Lavi Dan Sesel 🇸🇨 | Bidze Nasyonal 2027 – Part 2 | EP31 | Standpoint Seychelles Live",
+      "date": "2026-11-23",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "published",
+      "related": [
+        {
+          "youtube_id": "OaqjyDR7T58",
+          "relation": "part-1"
+        }
+      ],
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "9ZxMu2lTdtA",
+      "episode": null,
+      "title": "Sesel i pou lekel? Devlopman ek loportinite – Part 2",
+      "title_lang": "crs",
+      "published_title": "Sesel i pou lekel? EP 26 | Devlopman ek loportinite | Standpoint Seychelles | Part 2",
+      "date": "2026-10-05",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Labelled EP 26 on YouTube, but the 19 Oct release is also labelled EP 26. Confirm the episode number.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "U3J6BG-6ttQ",
+      "episode": null,
+      "title": "Kwa ki pe touy nou Seselwa ek nou Kreol?",
+      "title_lang": "crs",
+      "published_title": "Kwa ki pe touy nou Seselwa ek nou Kreol? | Standpoint Seychelles live EP 26",
+      "date": "2026-10-19",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Labelled EP 26 on YouTube, but the 5 Oct release is also labelled EP 26. Confirm the episode number.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "vtr2-7macGM",
+      "episode": null,
+      "title": "Se sa ki Seselwa pe dir lo bann size ki konsern zot",
+      "title_lang": "crs",
+      "published_title": "SE SA KI SESELWA PE DIR LO BANN SIZE KI KOSERN ZOT 12-10-2026",
+      "date": "2026-10-12",
+      "date_source": "official channel RSS feed + episode poster, checked 2026-11-25",
+      "format": "street-interviews",
+      "summary": null,
+      "status": "review",
+      "review_note": "Looks like street interviews, not a numbered episode. Confirm format before publishing.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "cIDHX9doXyw",
+      "episode": 7,
+      "title": "Breaking the Cycle: From Dependency to Dominion",
+      "title_lang": "en",
+      "published_title": "Breaking the Cycle: From Dependency to Dominion | Standpoint Seychelles Live | Ep 7",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Welfare dependency Part 1 (lead). Verified on the official channel; broadcast date not yet confirmed.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "8K1VD2tM3P0",
+      "episode": 13,
+      "title": "Is the New Generation Ready to Lead?",
+      "title_lang": "en",
+      "published_title": "Is the New Generation Ready to Lead? | Standpoint Seychelles Live | Ep 13",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Leadership transfer (lead). Broadcast date not yet confirmed.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "Dro7oKOoP44",
+      "episode": null,
+      "title": "Eski Bann Vye Dirizan In Pare Pou Pas Dirizans Ek Nouvo Zenerasyon?",
+      "title_lang": "crs",
+      "published_title": "Eski Bann Vye Dirizan In Pare Pou Pas Dirizans Ek Nouvo Zenerasyon? | Standpoint Seychelles Live",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Leadership transfer (lead). No episode number in the title; broadcast date not yet confirmed.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "aYUa9QMy57c",
+      "episode": 15,
+      "title": "Merit or Connections? What Kind of Seychelles Are We Building?",
+      "title_lang": "en",
+      "published_title": "Merit or Connections? What Kind of Seychelles Are We Building? | Standpoint Seychelles Live | Ep 15",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Merit versus connections (lead). Broadcast date not yet confirmed.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "29DK4x4aP3w",
+      "episode": 16,
+      "title": "Merit Ouswa Koneksyon? Ki Sesel Pe Kontrir? – Part 2",
+      "title_lang": "crs",
+      "published_title": "Merit Ouswa Koneksyon? Ki Sesel Pe Kontrir? - Part 2 | StandPoint Seychelles Live | Ep 16",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Merit versus connections Part 2 (lead). Broadcast date not yet confirmed.",
+      "related": [
+        {
+          "youtube_id": "aYUa9QMy57c",
+          "relation": "part-1"
+        }
+      ],
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "h4ZxRLlE66I",
+      "episode": 18,
+      "title": "Lepase Pa Kapab Vin Vizyon En Pep",
+      "title_lang": "crs",
+      "published_title": "Lepase Pa Kapab Vin Vizyon En Pep | Standpoint Seychelles live | Ep 18",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Lead matched. Broadcast date not yet confirmed. Chapter timestamps come from editorial notes and must be checked against this replay before they are published.",
+      "chapters_pending": [
+        {
+          "start": "04:01",
+          "end": "04:46",
+          "topic": "Moving beyond the past"
+        },
+        {
+          "start": "07:16",
+          "end": "08:34",
+          "topic": "Civic education"
+        },
+        {
+          "start": "58:44",
+          "end": "1:00:26",
+          "topic": "Fear and closure"
+        },
+        {
+          "start": "1:28:46",
+          "end": "1:30:01",
+          "topic": "National vision"
+        }
+      ],
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "3Q4pSIFHA_c",
+      "episode": null,
+      "title": "Live Podcast: Mass Sport Extravaganza 2026",
+      "title_lang": "en",
+      "published_title": "🔴 LIVE PODCAST: Mass Sport Extravaganza 2026 | One Game. One Dream. One World.",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "One of two streams with this title. Confirm date and whether it is a preview or coverage from 22 August.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "yskDz7E9xAM",
+      "episode": null,
+      "title": "Live Podcast: Mass Sport Extravaganza 2026",
+      "title_lang": "en",
+      "published_title": "🔴 LIVE PODCAST: Mass Sport Extravaganza 2026 | One Game. One Dream. One World.",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "One of two streams with this title. Confirm date and whether it is a preview or coverage from 22 August.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "AakAgm--eAE",
+      "episode": 6,
+      "title": "Mental Health: The Reality We Ignore",
+      "title_lang": "en",
+      "published_title": "Mental Health: The Reality We Ignore | Standpoint Seychelles Live | Ep 6",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Not in the handover leads. Verified on the official channel; broadcast date not yet confirmed.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "fjcBbb-sOq4",
+      "episode": 9,
+      "title": "Productivity vs Politics",
+      "title_lang": "en",
+      "published_title": "Productivity vs Politics | Standpoint Seychelles Live | Ep 9",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Not in the handover leads; possibly related to 'political culture as a barrier'. Broadcast date not yet confirmed.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "wWn2lG-5j0g",
+      "episode": 10,
+      "title": "Productivity and Politics – Part 2",
+      "title_lang": "en",
+      "published_title": "Productivity and Politics – Part 2 | Standpoint Seychelles Live |Ep 10",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Not in the handover leads; possibly related to 'political culture as a barrier'. Broadcast date not yet confirmed.",
+      "related": [
+        {
+          "youtube_id": "fjcBbb-sOq4",
+          "relation": "part-1"
+        }
+      ],
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "SzjY_iUqDaQ",
+      "episode": 11,
+      "title": "Youth, Values and Seychelles’ Future",
+      "title_lang": "en",
+      "published_title": "Youth, Values and Seychelles’ Future | Standpoint Seychelles Live Ep 11",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Not in the handover leads. Broadcast date not yet confirmed.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "pbJauG-57do",
+      "episode": 19,
+      "title": "En Keksoz In Sanze Dan Sesel… Me Kwa?",
+      "title_lang": "crs",
+      "published_title": "En Keksoz In Sanze Dan Sesel… Me Kwa? |Standpoint Seychelles live | Ep 19",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Not in the handover leads. Broadcast date not yet confirmed.",
+      "source": "handover-2026-11-25"
+    },
+    {
+      "youtube_id": "67neSnGnz30",
+      "episode": 20,
+      "title": "Eski Ou Ti Pou Konstrir Ou Lavenir Dan Sesel?",
+      "title_lang": "crs",
+      "published_title": "Eski Ou Ti Pou Konstrir Ou Lavenir Dan Sesel? | Standpoint Seychelles Live | Ep 20",
+      "date": "",
+      "date_source": null,
+      "format": "live-podcast",
+      "summary": null,
+      "status": "review",
+      "review_note": "Not in the handover leads. Broadcast date not yet confirmed.",
+      "source": "handover-2026-11-25"
+    }
+  ],
+  "unmatched_leads": [
+    "Freedom of expression in Seychelles: no matching title found on the official channel.",
+    "Political culture as a barrier, Parts 1 and 2: no exact title match (Ep 9–10 'Productivity vs/and Politics' may be related).",
+    "Short-form discussion about salary increases and personal income tax (November): no matching upload found; may be a TikTok/Facebook clip.",
+    "Episode 25–28 artwork: posters on YouTube match EP25, EP27 and EP28; EP26 numbering conflict (see review records)."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "_note": "Add a broadcast only when its announcement is approved. Times are Seychelles time (Indian/Mahe, UTC+4). The site shows 'Watch live' only for entries with a confirmed live_url, and hides each entry once its end time has passed. With no upcoming entry, the site shows 'Watch a replay'.",
+  "_example": {
+    "title": "Episode title as announced",
+    "start": "2026-12-07T19:30",
+    "end": "2026-12-07T21:30",
+    "live_url": "https://www.youtube.com/@StandpointSeychelles/live",
+    "announcement": "Where the time was approved (e.g. poster or post link)"
+  },
+  "upcoming": []
+}
