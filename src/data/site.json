@@ -1,0 +1,40 @@
+{
+  "_note": "Central site settings. Social links render on the homepage, Watch page, Contact page and footer ONLY when \"verified\" is true. Record how each link was verified in \"evidence\".",
+  "site_url": "https://stanalbest00-sudo.github.io/standpoint/",
+  "name": "Standpoint Seychelles",
+  "brand_line": "Where Truth Ignites Transformation.",
+  "programme": "Standpoint Seychelles Live",
+  "timezone": "Indian/Mahe",
+  "timezone_label": "Seychelles time",
+  "social": {
+    "youtube": {
+      "label": "YouTube",
+      "description": "Full episodes and replays",
+      "url": "https://www.youtube.com/@StandpointSeychelles",
+      "verified": true,
+      "evidence": "Publisher 'Standpoint Seychelles' of gDyx0k-ZPwA, LQjxmW92yps and 2zFrmKl5qFM (YouTube oEmbed author_url), checked 2026-11-25. Channel ID UC0UKI0XQKKmyCrbWKKtzGTw."
+    },
+    "facebook": {
+      "label": "Facebook",
+      "description": "Live discussions, updates and community posts",
+      "url": "https://www.facebook.com/profile.php?id=61586962125744",
+      "verified": true,
+      "evidence": "Linked from the YouTube channel header (share link 1EUCKCXk91). Page name 'Standpoint Seychelles', description 'Where Truth Ignites Transformation.' Checked 2026-11-25."
+    },
+    "tiktok": {
+      "label": "TikTok",
+      "description": "Short clips, highlights and audience conversation",
+      "url": "https://www.tiktok.com/@standpoint.sey",
+      "verified": true,
+      "evidence": "Linked from the YouTube channel header. Profile 'Standpoint Seychelles Official' (@standpoint.sey). Checked 2026-11-25."
+    }
+  },
+  "whatsapp": {
+    "number_display": "+248 262 8049",
+    "link": "https://wa.me/2482628049",
+    "button_en": "Send us a question",
+    "invite_crs": "Ou annan en kestyon pour nou prosen diskisyon? Anvoy nou en mesaz lo WhatsApp.",
+    "call_note_en": "You can also call this number on WhatsApp.",
+    "evidence": "Supplied in the handover; matches 'Calls & WhatsApp: +248 2628049' on the YouTube channel."
+  }
+}

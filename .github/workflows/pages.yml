@@ -1,8 +1,9 @@
-name: Deploy site to GitHub Pages
+name: Check and deploy site
 
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -11,22 +12,35 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check content, imports and links
+        run: python3 scripts/check.py
+
   deploy:
+    if: github.event_name != 'pull_request'
+    needs: check
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build site
+        run: python3 scripts/build.py _site
       - uses: actions/configure-pages@v5
-      - name: Collect site files
-        run: |
-          mkdir _site
-          cp -r *.html sitemap.xml robots.txt .nojekyll assets _site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

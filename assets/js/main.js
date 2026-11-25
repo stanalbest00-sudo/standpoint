@@ -317,6 +317,40 @@
     video.addEventListener('ended', close);
   }
 
+  // ── Click-to-play YouTube players ──────────────────────────────
+  // Only a thumbnail loads until the visitor presses play; then the
+  // privacy-enhanced YouTube player replaces it and starts playing.
+  document.querySelectorAll('.player[data-yt]').forEach(function (el) {
+    var btn = el.querySelector('.player-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var id = el.getAttribute('data-yt');
+      var label = (btn.getAttribute('aria-label') || '').replace(/^Play /, '').replace(/ here$/, '');
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0&playsinline=1';
+      f.title = label || 'YouTube video';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      el.innerHTML = '';
+      el.appendChild(f);
+      f.focus();
+    });
+  });
+
+  // ── Broadcast status ───────────────────────────────────────────
+  // A confirmed live broadcast disappears once its end time passes;
+  // when none remain, the "Watch a replay" note shows instead.
+  var lives = document.querySelectorAll('.broadcast[data-ends]');
+  if (lives.length) {
+    var remaining = 0;
+    lives.forEach(function (b) {
+      if (Date.parse(b.getAttribute('data-ends')) < Date.now()) b.hidden = true; else remaining++;
+    });
+    var replay = document.querySelector('.broadcast-replay');
+    if (replay && !remaining) replay.hidden = false;
+  }
+
   // ── Quiz ───────────────────────────────────────────────────────
   document.querySelectorAll('.quiz').forEach(function (quiz) {
     var total = quiz.querySelectorAll('.q').length;
